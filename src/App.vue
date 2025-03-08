@@ -36,8 +36,8 @@ function doBreathe() {
 }
 
 #circle {
-  width: 10px;
-  height: 10px;
+  width: 0px;
+  height: 0px;
   background: aqua;
   border-radius: 50%;
 }
@@ -52,11 +52,13 @@ function doBreathe() {
 
 @keyframes breath-in-out {
   from {
-    scale: 0;
+    width: 0px;
+    height: 0px;
   }
 
   to {
-    scale: 20;
+    width: 200px;
+    height: 200px;
   }
 }
 </style>
