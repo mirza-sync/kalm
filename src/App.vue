@@ -7,9 +7,9 @@ function doBreathe() {
 
 <template>
   <div class="container">
-    <h1 id="title">I nid Kalm</h1>
+    <h1 class="title">I nid Kalm</h1>
     <div class="wrapper">
-      <div id="circle"></div>
+      <div class="circle"></div>
     </div>
     <button type="button" @click="doBreathe()">Start</button>
   </div>
@@ -23,7 +23,7 @@ function doBreathe() {
   gap: 1rem;
 }
 
-#title {
+.title {
   text-align: center;
   margin-block: 0;
 }
@@ -35,7 +35,7 @@ function doBreathe() {
   place-items: center;
 }
 
-#circle {
+.circle {
   width: 100px;
   height: 100px;
   background: aqua;
