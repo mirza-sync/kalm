@@ -1,6 +1,6 @@
 <script setup lang="ts">
 function doBreathe() {
-  const circle = document.getElementById("circle");
+  const circle = document.getElementsByClassName("circle")[0];
   circle?.classList.toggle("breathe-animation");
 }
 </script>
