@@ -44,20 +44,31 @@ function doBreathe() {
 }
 
 .breathe-animation {
-  animation-name: breath-in-out;
+  animation-name: inhale-or-hold1;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
 }
 
-@keyframes breath-in-out {
+
+
+@keyframes inhale-or-hold1 {
   from {
     transform: scale(0);
   }
 
   to {
     transform: scale(2);
+  }
+}
+
+@keyframes exhale-or-hold2 {
+  from {
+    transform: scale(2);
+  }
+
+  to {
+    transform: scale(0);
   }
 }
 </style>
