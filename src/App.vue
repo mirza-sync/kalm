@@ -9,7 +9,6 @@ let intervalId = 0
 
 const handleStartPause = () => {
   isRunning.value = !isRunning.value
-  console.log(isRunning.value)
   if (isRunning.value) {
     phase.value = "inhale"
     doBreathe()
@@ -35,11 +34,16 @@ function doBreathe() {
   <div class="container">
     <h1 class="title">I nid Kalm</h1>
     <div class="wrapper">
-      <div
-        :class="[(phase === 'inhale' || phase === 'hold1') ? 'inhale' : (phase === 'exhale' || phase === 'hold2') ? 'exhale' : '', 'circle']">
+      <div :class="[
+        { ['inhale']: (phase === 'inhale' || phase === 'hold1') },
+        { ['exhale']: (phase === 'exhale' || phase === 'hold2') },
+        'circle'
+      ]">
       </div>
     </div>
-    <div>{{ phase || isRunning }}</div>
+    <div>
+      {{ phase }}
+    </div>
     <button type="button" @click="handleStartPause()">{{ !isRunning ? 'Start' : 'Stop' }}</button>
   </div>
 </template>
