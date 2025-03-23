@@ -15,4 +15,6 @@ body {
   padding: 0;
   display: grid;
   place-items: center;
+  background-image: url(./assets//images/ethereal-natural-environment.jpg);
+  background-size: cover;
 }
