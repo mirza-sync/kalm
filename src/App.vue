@@ -10,7 +10,9 @@ const steps = [
 const phase = ref();
 const isRunning = ref(false)
 const duration = 3
-let intervalId = 0
+let breathIntervalId = 0
+let counterIntervalId = 0
+const counter = ref(0)
 
 const handleStartPause = () => {
   isRunning.value = !isRunning.value
@@ -18,8 +20,10 @@ const handleStartPause = () => {
     phase.value = "inhale"
     doBreathe()
   } else {
-    clearInterval(intervalId)
+    clearInterval(breathIntervalId)
+    clearInterval(counterIntervalId)
     phase.value = ""
+    counter.value = 0
   }
 };
 
@@ -28,7 +32,15 @@ function doBreathe() {
 
   let currentStepIndex = steps.findIndex(step => step.key === phase.value);
 
-  intervalId = setInterval(() => {
+  counter.value = 1
+  counterIntervalId = setInterval(() => {
+    counter.value++
+    if (counter.value > duration) {
+      counter.value = 1
+    }
+  }, 1000);
+
+  breathIntervalId = setInterval(() => {
     currentStepIndex = (currentStepIndex + 1) % steps.length;
     phase.value = steps[currentStepIndex].key
   }, duration * 1000);
@@ -45,8 +57,9 @@ function doBreathe() {
         'circle'
       ]">
       </div>
+      <div class="counter">{{ counter || "" }}</div>
     </div>
-    <div>{{ steps.find(step => step.key === phase)?.label }}</div>
+    <h2>{{steps.find(step => step.key === phase)?.label}}</h2>
     <button type="button" @click="handleStartPause()">{{ !isRunning ? 'Start' : 'Stop' }}</button>
   </div>
 </template>
@@ -69,6 +82,7 @@ function doBreathe() {
   height: 50vh;
   display: grid;
   place-items: center;
+  position: relative;
 }
 
 .circle {
@@ -76,6 +90,17 @@ function doBreathe() {
   height: 100px;
   background: aqua;
   border-radius: 50%;
+}
+
+.counter {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 1;
 }
 
 .inhale {
