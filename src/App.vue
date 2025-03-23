@@ -49,7 +49,7 @@ function doBreathe() {
 
 <template>
   <div class="container">
-    <h1 class="title">I nid Kalm</h1>
+    <h1 class="title">Box Breathing</h1>
     <div class="wrapper">
       <div :class="[
         { ['inhale']: (phase === 'inhale' || phase === 'hold1') },
@@ -88,19 +88,24 @@ function doBreathe() {
 .circle {
   width: 100px;
   height: 100px;
-  background: aqua;
+  background: lightgray;
   border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
+-webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
 }
 
 .counter {
   font-size: 2rem;
-  color: white;
+  color: lightslategray;
   font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   z-index: 1;
+  opacity: 0.5;
 }
 
 .inhale {
