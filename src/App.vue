@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const steps = ["inhale", "hold1", "exhale", "hold2"];
+const steps = [
+  { key: "inhale", label: "Inhale" },
+  { key: "hold1", label: "Hold" },
+  { key: "exhale", label: "Exhale" },
+  { key: "hold2", label: "Hold" },
+];
 const phase = ref();
 const isRunning = ref(false)
 const duration = 3
@@ -21,11 +26,11 @@ const handleStartPause = () => {
 function doBreathe() {
   if (!isRunning) return;
 
-  let currentStepIndex = steps.indexOf(phase.value);
+  let currentStepIndex = steps.findIndex(step => step.key === phase.value);
 
   intervalId = setInterval(() => {
     currentStepIndex = (currentStepIndex + 1) % steps.length;
-    phase.value = steps[currentStepIndex]
+    phase.value = steps[currentStepIndex].key
   }, duration * 1000);
 }
 </script>
@@ -41,9 +46,7 @@ function doBreathe() {
       ]">
       </div>
     </div>
-    <div>
-      {{ phase }}
-    </div>
+    <div>{{ steps.find(step => step.key === phase)?.label }}</div>
     <button type="button" @click="handleStartPause()">{{ !isRunning ? 'Start' : 'Stop' }}</button>
   </div>
 </template>
