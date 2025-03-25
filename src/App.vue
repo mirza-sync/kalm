@@ -60,7 +60,7 @@ function doBreathe() {
       <div class="counter">{{ counter || "" }}</div>
     </div>
     <h2>{{steps.find(step => step.key === phase)?.label}}</h2>
-    <button type="button" @click="handleStartPause()">{{ !isRunning ? 'Start' : 'Stop' }}</button>
+    <button type="button" class="btn" @click="handleStartPause()">{{ !isRunning ? 'Meditate' : 'Stop' }}</button>
   </div>
 </template>
 
@@ -106,6 +106,25 @@ function doBreathe() {
   translate: -50% -50%;
   z-index: 1;
   opacity: 0.5;
+}
+
+.btn {
+  color: white;
+  font-size: 1rem;
+  border-radius: 12px;
+  padding-inline: 1.5rem;
+  padding-block: 0.5rem;
+  border: none;
+  background-color: rgba(66, 66, 66, 0.15);
+  backdrop-filter: blur(20px);
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+.btn:hover {
+  border: 1px solid gray;
+  color: rgb(100, 100, 100);
+  background-color: rgba(255,255,255,0.2);
 }
 
 .inhale {
