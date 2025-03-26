@@ -91,9 +91,9 @@ function doBreathe() {
   background: lightgray;
   border-radius: 50%;
   opacity: 0.6;
-  box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
--webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
--moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .counter {
@@ -109,22 +109,20 @@ function doBreathe() {
 }
 
 .btn {
-  color: white;
+  color: black;
   font-size: 1rem;
   border-radius: 12px;
   padding-inline: 1.5rem;
   padding-block: 0.5rem;
   border: none;
-  background-color: rgba(66, 66, 66, 0.15);
+  background-color: rgba(211, 211, 211, 0.15);
   backdrop-filter: blur(20px);
-  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
 .btn:hover {
-  border: 1px solid gray;
-  color: rgb(100, 100, 100);
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .inhale {
