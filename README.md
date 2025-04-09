@@ -10,6 +10,7 @@
   - Just realized I used `classname` instead of `class`. Guess I'm doing too much React 🤣.
 
 - Vue even got autocomple for css class that I defined in the component. :mindblown
+  - Wait, where's the mindblown emoji? Guess when you're typing in the middle of the night, you'll mistakenly use :mindblown instead of 🤯.
 
 ## Reference
 - Background image source: [Freepik](https://www.freepik.com/free-ai-image/ethereal-natural-environment_126077170.htm#fromView=search&page=1&position=15&uuid=7a35f597-7f66-4a07-adcd-d8a33e1a826c&query=Calm+Background)
