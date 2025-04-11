@@ -119,6 +119,7 @@ function doBreathe() {
   backdrop-filter: blur(20px);
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  font-family: inherit;
 }
 
 .btn:hover {
