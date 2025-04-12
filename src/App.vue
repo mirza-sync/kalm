@@ -60,6 +60,14 @@ function doBreathe() {
       <div class="counter">{{ counter || "" }}</div>
     </div>
     <h2 class="phase">{{steps.find(step => step.key === phase)?.label}}</h2>
+    <div class="duration">
+      <label for="duration">Duration</label>
+      <select name="duration" id="duration">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="8">8</option>
+      </select>
+    </div>
     <button type="button" class="btn" @click="handleStartPause()">{{ !isRunning ? 'Meditate' : 'Stop' }}</button>
   </div>
 </template>
@@ -110,6 +118,12 @@ function doBreathe() {
 
 .phase {
   height: 1.5rem;
+}
+
+.duration {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .btn {
