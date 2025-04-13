@@ -9,10 +9,11 @@ const steps = [
 ];
 const phase = ref();
 const isRunning = ref(false)
-const duration = 3
+const duration = ref(3)
 let breathIntervalId = 0
 let counterIntervalId = 0
 const counter = ref(0)
+const durationList = [3, 4, 8]
 
 const handleStartPause = () => {
   isRunning.value = !isRunning.value
@@ -35,7 +36,7 @@ function doBreathe() {
   counter.value = 1
   counterIntervalId = setInterval(() => {
     counter.value++
-    if (counter.value > duration) {
+    if (counter.value > duration.value) {
       counter.value = 1
     }
   }, 1000);
@@ -43,7 +44,7 @@ function doBreathe() {
   breathIntervalId = setInterval(() => {
     currentStepIndex = (currentStepIndex + 1) % steps.length;
     phase.value = steps[currentStepIndex].key
-  }, duration * 1000);
+  }, duration.value * 1000);
 }
 </script>
 
@@ -55,18 +56,18 @@ function doBreathe() {
         { ['inhale']: (phase === 'inhale' || phase === 'hold1') },
         { ['exhale']: (phase === 'exhale' || phase === 'hold2') },
         'circle'
-      ]">
+      ]" :style="{ animationDuration: duration + 's' }">
       </div>
       <div class="counter">{{ counter || "" }}</div>
     </div>
-    <h2 class="phase">{{steps.find(step => step.key === phase)?.label}}</h2>
-    <div class="duration">
-      <label for="duration">Duration</label>
-      <select name="duration" id="duration">
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="8">8</option>
-      </select>
+    <div class="phase-wrapper">
+      <p v-if="isRunning" class="phase-label">{{steps.find(step => step.key === phase)?.label}}</p>
+      <div v-else class="duration">
+        <label for="duration">Duration</label>
+        <select name="duration" id="duration" v-model="duration">
+          <option v-for="d in durationList" :value="d">{{ d }} seconds</option>
+        </select>
+      </div>
     </div>
     <button type="button" class="btn" @click="handleStartPause()">{{ !isRunning ? 'Meditate' : 'Stop' }}</button>
   </div>
@@ -116,8 +117,13 @@ function doBreathe() {
   opacity: 0.5;
 }
 
-.phase {
+.phase-wrapper {
   height: 1.5rem;
+}
+
+.phase-label {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 .duration {
@@ -146,7 +152,6 @@ function doBreathe() {
 
 .inhale {
   animation-name: inhale-or-hold1;
-  animation-duration: 3s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
@@ -154,7 +159,6 @@ function doBreathe() {
 
 .exhale {
   animation-name: exhale-or-hold2;
-  animation-duration: 3s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
