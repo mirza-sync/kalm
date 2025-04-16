@@ -63,8 +63,8 @@ function doBreathe() {
     <div class="phase-wrapper">
       <p v-if="isRunning" class="phase-label">{{steps.find(step => step.key === phase)?.label}}</p>
       <div v-else class="duration">
-        <label for="duration">Duration</label>
-        <select name="duration" id="duration" v-model="duration">
+        <label for="duration">Duration:</label>
+        <select class="dropdown" name="duration" id="duration" v-model="duration">
           <option v-for="d in durationList" :value="d">{{ d }} seconds</option>
         </select>
       </div>
@@ -130,6 +130,16 @@ function doBreathe() {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.dropdown {
+  padding-inline: 4px;
+  padding-block: 2px;
+  border-radius: 8px;
+  font-family: inherit;
+}
+.dropdown:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .btn {
