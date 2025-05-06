@@ -1,6 +1,8 @@
 # Kalm
 
-- I discovered that my breathing pattern was bad. It was shallow and not uniform. People say that meditation could help. Hence, lets create a webapp that helps me to breathe properly.
+- I discovered that my breathing pattern was bad. It was shallow and not uniform. People say that meditation could help. Hence, lets create a webapp that helps me to meditate and breathe properly.
+
+> You're breathing wrong!
 
 ## Dev Logs
 
